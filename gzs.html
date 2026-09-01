@@ -980,6 +980,21 @@ body {
   color: var(--text-secondary);
   line-height: 1.7;
 }
+/* 时间线按时间解锁 */
+.timeline-item.timeline-reveal {
+  animation: timelineReveal 0.9s ease both;
+}
+@keyframes timelineReveal {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.timeline-locked-hint {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-top: 8px;
+  letter-spacing: 0.5px;
+}
 .love-promises {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -2010,6 +2025,7 @@ n			#typecho-calendar-widget .tcw-calendar-day .tcw-day-lunar {
           <div class="stat-label">工作日在线</div>
         </div>
       </div>
+      </div>
     </section>
 
     <!-- Services -->
@@ -2149,7 +2165,7 @@ n			#typecho-calendar-widget .tcw-calendar-day .tcw-day-lunar {
             <svg class="skill-icon-float" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M170.2 246.4h342.1s44.2-77.8 89.1-77.8h254.9c20.7 0 37.7 19.8 37.7 44l1.1 598.1c0 24.2-19.8 44-44 44h-681c-24.2 0-44-19.8-44-44V290.4c0.1-24.2 19.9-44 44.1-44z" fill="currentColor"></path><path d="M862.9 671.5l-688 38.3-22.2-406.4 688.1-59.3z" fill="currentColor" opacity=".75"></path><path d="M870.8 671.8L242.2 707l-21.1-388 634.6-35.2z" fill="currentColor" opacity=".75"></path><path d="M840.7 673.7L218.1 725l-21.9-383.4 623.4-55.9z" fill="#FFFFFF"></path><path d="M807.9 715.1L178.6 750l-22.2-406.3 629.7-48.1z" fill="#F2F2F1"></path><path d="M796 713.5l-619 36.3-22.1-406.3 618.8-40.1z" fill="#FFFFFF"></path><path d="M895.2 425.1H509.1s-44.2-71.4-89.1-71.4H125.1c-20.7 0-38.9 16.3-38.9 36l40 429.2c0 19.7 19.8 35.8 44 35.8h685c24.2 0 44-16.1 44-35.8l40-358c0-19.7-19.8-35.8-44-35.8z" fill="currentColor"></path></svg>
           </div>
           <h3 class="skill-title">更多技能即将上线</h3>
-          <p class="skill-desc">技能包持续迭代中，后续将持续新增通用 AI 技能，覆盖文件处理、代码处理、文本处理等更多场景。</p>
+          <p class="skill-desc">技能包持续迭代中，后续将持续新增通用 AI 技能，覆盖文件处理、代码处理、文本处理、图像处理等更多场景。</p>
         </div>
       </div>
       <div class="skills-cta">
@@ -2476,53 +2492,155 @@ n			#typecho-calendar-widget .tcw-calendar-day .tcw-day-lunar {
     <section class="section" style="padding-top:0;">
       <div class="section-label" style="justify-content:flex-start; display:flex;">爱情旅程</div>
       <h2 class="section-title" style="text-align:center;">我们的<span class="gradient-text">故事</span></h2>
-      <div class="timeline">
-        <div class="timeline-item">
+      <div class="timeline" id="loveTimeline">
+        <div class="timeline-item" data-date="2024-12-13">
           <div class="timeline-date">2024.12.13</div>
           <h3 class="timeline-title">第一次相识 · 命运的安排</h3>
           <p class="timeline-desc">2024年12月13日，HXW 与 LDN 第一次相遇。也许当时的我们还不知道，这个看似平凡的日子，将成为一切故事的开端。缘分就是这样，不早不晚，刚刚好。</p>
         </div>
-        <div class="timeline-item">
+        <div class="timeline-item" data-date="2025-04-27">
           <div class="timeline-date">2025.04.27</div>
           <h3 class="timeline-title">订婚 · 许下一生的承诺</h3>
           <p class="timeline-desc">农历三月三十，我们订婚了。从相识到相知，从相爱到相守，这一天，我们许下了对彼此一生的承诺。愿往后余生，冷暖有相知，喜乐有分享。</p>
         </div>
-        <div class="timeline-item">
+        <div class="timeline-item" data-date="2025-05-20">
           <div class="timeline-date">2025.05.20</div>
           <h3 class="timeline-title">520 · 正式登记结婚</h3>
           <p class="timeline-desc">在这个充满爱意的日子里，我们正式结为夫妻。520 不仅是一个数字，更是我们对彼此一生的承诺。</p>
         </div>
-        <div class="timeline-item">
+        <div class="timeline-item" data-date="2025-08-29">
           <div class="timeline-date">2025.08.29</div>
           <h3 class="timeline-title">七夕 · 中国人的情人节</h3>
           <p class="timeline-desc">婚后的第一个七夕，牛郎织女相会的日子。愿我们的爱情，如同古老传说般，跨越时间，恒久不变。</p>
         </div>
-        <div class="timeline-item">
+        <div class="timeline-item" data-date="2025-11-23">
           <div class="timeline-date">2025.11.23</div>
           <h3 class="timeline-title">西藏之旅 · 世界屋脊上的浪漫征途</h3>
           <p class="timeline-desc">一起踏上世界屋脊，在离天空最近的地方，许下最真挚的愿望。布达拉宫前、纳木错畔，都留下了我们的足迹和笑声。</p>
         </div>
-        <div class="timeline-item">
+        <div class="timeline-item" data-date="2026-02-14">
           <div class="timeline-date">2026.02.14</div>
           <h3 class="timeline-title">第一个情人节</h3>
           <p class="timeline-desc">婚后的第一个西方情人节，鲜花、巧克力、烛光晚餐。愿每一个情人节，都有你在身边。</p>
         </div>
-        <div class="timeline-item">
+        <div class="timeline-item" data-date="2026-05-20">
           <div class="timeline-date">2026.05.20</div>
           <h3 class="timeline-title">结婚一周年纪念日</h3>
           <p class="timeline-desc">一年的婚姻生活，有欢笑有泪水，有平淡有惊喜。一周年，纸婚，愿我们的爱情如纸张般洁白，却比纸张更坚韧。</p>
         </div>
-        <div class="timeline-item">
+        <div class="timeline-item" data-date="2026-08-19">
           <div class="timeline-date">2026.08.19</div>
           <h3 class="timeline-title">七夕 · 第二个属于我们的七夕</h3>
           <p class="timeline-desc">又一年七夕，身边依然是你。愿岁岁年年，都能与你共度这个浪漫的中国情人节。</p>
         </div>
-        <div class="timeline-item">
+        <div class="timeline-item" data-date="2026-10-30">
           <div class="timeline-date">2026.10.30</div>
           <h3 class="timeline-title">宝宝出生 · 新生命的到来</h3>
-          <p class="timeline-desc">预产期2026年10月30日，我们的小生命即将降临。从两人世界到三口之家，这是爱情最美的延续。愿你健康平安，爸爸妈妈期待与你相见。</p>
+          <p class="timeline-desc">2026年10月30日，我们的小生命降临了。从两人世界到三口之家，这是爱情最美的延续。愿你健康平安，爸爸妈妈爱你。</p>
+        </div>
+        <!-- ===== 未来岁月 · 到时间才会解锁显示 ===== -->
+        <div class="timeline-item" data-date="2027-10-30">
+          <div class="timeline-date">2027.10.30</div>
+          <h3 class="timeline-title">宝宝一周岁 · 周岁礼</h3>
+          <p class="timeline-desc">宝宝一周岁了。抓周、切蛋糕、吹蜡烛，每一个瞬间都想用相机定格。看着TA从咿呀学语到蹒跚学步，才真正懂得“父母”二字的分量。谢谢你选择我们做爸爸妈妈。</p>
+        </div>
+        <div class="timeline-item" data-date="2028-10-30">
+          <div class="timeline-date">2028.10.30</div>
+          <h3 class="timeline-title">宝宝两周岁 · 咿呀学语</h3>
+          <p class="timeline-desc">宝宝两岁了，会跑会跳，会奶声奶气地喊爸爸妈妈。看着TA一点点长大，就像看着我们的爱有了具象的模样。愿TA眼里永远有光，心里永远有爱。</p>
+        </div>
+        <div class="timeline-item" data-date="2029-09-01">
+          <div class="timeline-date">2029.09.01</div>
+          <h3 class="timeline-title">宝宝上幼儿园 · 第一次背起小书包</h3>
+          <p class="timeline-desc">宝宝背上小书包，第一次走进幼儿园。看着TA小小的背影，既欣慰又舍不得。宝贝，慢慢来，爸爸妈妈永远在你身后。</p>
+        </div>
+        <div class="timeline-item" data-date="2030-05-20">
+          <div class="timeline-date">2030.05.20</div>
+          <h3 class="timeline-title">结婚五周年 · 木婚</h3>
+          <p class="timeline-desc">五周年，木婚。婚姻如树，根系早已在岁月里紧紧相连。五年风雨同行，愿下一个五年、五十年，依然是你。</p>
+        </div>
+        <div class="timeline-item" data-date="2030-10-30">
+          <div class="timeline-date">2030.10.30</div>
+          <h3 class="timeline-title">宝宝四周岁 · 慢慢长大</h3>
+          <p class="timeline-desc">宝宝四周岁，已经有自己的小主意和好朋友。我们陪TA看世界，TA也教会我们用新的眼睛重新认识世界。</p>
+        </div>
+        <div class="timeline-item" data-date="2032-09-01">
+          <div class="timeline-date">2032.09.01</div>
+          <h3 class="timeline-title">宝宝上小学 · 新的起点</h3>
+          <p class="timeline-desc">宝宝上小学了，背着新书包走进新的校园。从幼儿园的小朋友成长为一名小学生，愿你勇敢、好奇，在知识的海洋里快乐遨游。</p>
+        </div>
+        <div class="timeline-item" data-date="2035-05-20">
+          <div class="timeline-date">2035.05.20</div>
+          <h3 class="timeline-title">结婚十周年 · 锡婚</h3>
+          <p class="timeline-desc">十年，锡婚。从相识到相守，从青涩到成熟。锡婚寓意坚韧而柔软，就像我们一路走来的模样。愿往后的每一个十年，身边都是你。</p>
+        </div>
+        <div class="timeline-item" data-date="2038-09-01">
+          <div class="timeline-date">2038.09.01</div>
+          <h3 class="timeline-title">宝宝上中学 · 青春的序章</h3>
+          <p class="timeline-desc">宝宝上中学了，进入人生新的阶段。青春期的TA开始有自己的秘密和梦想，我们学着放手，也学着在身后默默守护。</p>
+        </div>
+        <div class="timeline-item" data-date="2040-05-20">
+          <div class="timeline-date">2040.05.20</div>
+          <h3 class="timeline-title">结婚十五周年 · 水晶婚</h3>
+          <p class="timeline-desc">十五年，水晶婚。晶莹剔透，纯粹无瑕。半生的浪漫与一生的陪伴，都沉淀在彼此清澈的目光里。</p>
+        </div>
+        <div class="timeline-item" data-date="2041-09-01">
+          <div class="timeline-date">2041.09.01</div>
+          <h3 class="timeline-title">宝宝上高中 · 追梦的年纪</h3>
+          <p class="timeline-desc">宝宝上高中了，离梦想越来越近。陪读的夜晚、鼓励的话语，都是我们给TA最温柔的铠甲。少年，大胆去追梦吧。</p>
+        </div>
+        <div class="timeline-item" data-date="2044-06-07">
+          <div class="timeline-date">2044.06.07</div>
+          <h3 class="timeline-title">宝宝高考 · 人生重要的一站</h3>
+          <p class="timeline-desc">宝宝高考，人生的重要一站。考场上你沉着落笔，考场外我们默默守候。无论结果如何，你都是我们最棒的孩子。</p>
+        </div>
+        <div class="timeline-item" data-date="2044-10-30">
+          <div class="timeline-date">2044.10.30</div>
+          <h3 class="timeline-title">宝宝成人礼 · 十八岁</h3>
+          <p class="timeline-desc">宝宝十八岁，成人礼。从襁褓中的婴儿到意气风发的少年，十八年的陪伴，是我们最骄傲的时光。宝贝，愿你前程似锦，平安喜乐。</p>
+        </div>
+        <div class="timeline-item" data-date="2045-05-20">
+          <div class="timeline-date">2045.05.20</div>
+          <h3 class="timeline-title">结婚二十周年 · 瓷婚</h3>
+          <p class="timeline-desc">二十年，瓷婚。瓷器般精美，也如瓷器般需要细心呵护。二十年白首之约，余生的每一天，依然想和你一起走。</p>
+        </div>
+        <div class="timeline-item" data-date="2050-05-20">
+          <div class="timeline-date">2050.05.20</div>
+          <h3 class="timeline-title">结婚二十五周年 · 银婚</h3>
+          <p class="timeline-desc">二十五年，银婚！从纸婚到银婚，四分之一个世纪。银色的光辉里，藏着从青丝到鬓角微霜的相守。谢谢你，把最好的年华给了我。愿下一个二十五年，依然牵着你的手。</p>
+        </div>
+        <div class="timeline-item" data-date="2055-05-20">
+          <div class="timeline-date">2055.05.20</div>
+          <h3 class="timeline-title">结婚三十周年 · 珍珠婚</h3>
+          <p class="timeline-desc">三十年，珍珠婚！三十年的相守，把风沙磨成了珍珠。岁月没有带走什么，只在我们心里沉淀下更圆润的爱。白首之约，才刚刚过半。</p>
+        </div>
+        <div class="timeline-item" data-date="2060-05-20">
+          <div class="timeline-date">2060.05.20</div>
+          <h3 class="timeline-title">结婚三十五周年 · 珊瑚婚</h3>
+          <p class="timeline-desc">三十五年，珊瑚婚。珊瑚是海里开出的花，历经浪涛依然鲜艳。愿我们的爱，也像珊瑚一样，在岁月的风浪里愈发绚丽。</p>
+        </div>
+        <div class="timeline-item" data-date="2065-05-20">
+          <div class="timeline-date">2065.05.20</div>
+          <h3 class="timeline-title">结婚四十周年 · 红宝石婚</h3>
+          <p class="timeline-desc">四十年，红宝石婚！四十年相濡以沫，情比红宝石更坚贞。四十年，我们从两个人变成一大家子人，热闹、圆满、感恩有你。</p>
+        </div>
+        <div class="timeline-item" data-date="2070-05-20">
+          <div class="timeline-date">2070.05.20</div>
+          <h3 class="timeline-title">结婚四十五周年 · 蓝宝石婚</h3>
+          <p class="timeline-desc">四十五年，蓝宝石婚！如蓝宝石般深邃而坚定。四十五年的光阴，把我们的爱打磨成最珍贵的宝石，历久弥新，光华不减。</p>
+        </div>
+        <div class="timeline-item" data-date="2075-05-20">
+          <div class="timeline-date">2075.05.20</div>
+          <h3 class="timeline-title">结婚五十周年 · 金婚</h3>
+          <p class="timeline-desc">五十年，金婚！从青丝到白发，从纸婚到金婚，半个世纪的相守。谢谢你，用一生履行了“白首不相离”的承诺。金婚快乐，我的爱人！</p>
+        </div>
+        <div class="timeline-item" data-date="2077-05-20">
+          <div class="timeline-date">2077.05.20</div>
+          <h3 class="timeline-title">结婚五十二周年 · 此生无憾</h3>
+          <p class="timeline-desc">五十二年，从2025到2077，从两个人的相遇到一个家的圆满。回首这一生，每个重要的瞬间都有你。此生有你，此生无憾。</p>
         </div>
       </div>
+      <p class="timeline-locked-hint" id="timelineLockedHint" style="display:none;"></p>
     </section>
 
     
@@ -2913,7 +3031,7 @@ function navigate(page) {
   initReveal();
   // Page-specific init
   if (page === 'tools') setTimeout(generateQR, 100);
-  if (page === 'love') { startLoveCounter(); updateAnniversaryCounts(); setTimeout(startHeartAnimation, 300); } else { stopHeartAnimation(); }
+  if (page === 'love') { startLoveCounter(); updateAnniversaryCounts(); updateTimelineVisibility(); setTimeout(startHeartAnimation, 300); } else { stopHeartAnimation(); }
   if (page === 'map') { setTimeout(initContactMap, 100); }
   if (page === 'calendar') initCalendar();
   if (page === 'agreement') setTimeout(initAgreementTOC, 100);
@@ -3713,6 +3831,67 @@ function startLoveCounter() {
   update();
   loveInterval = setInterval(update, 1000);
 }
+
+// ===== Love Timeline · 按时间解锁显示 =====
+function parseTimelineDate(text) {
+  if (!text) return null;
+  var parts = text.trim().split('.');
+  if (parts.length < 3) return null;
+  var y = parseInt(parts[0], 10);
+  var m = parseInt(parts[1], 10);
+  var d = parseInt(parts[2], 10);
+  if (isNaN(y) || isNaN(m) || isNaN(d)) return null;
+  return new Date(y, m - 1, d);
+}
+function updateTimelineVisibility() {
+  var container = document.getElementById('loveTimeline');
+  if (!container) return;
+  var now = new Date();
+  now.setHours(0, 0, 0, 0); // 当日零点，作为“已到时间”判断
+  var lockedCount = 0;
+  var items = container.querySelectorAll('.timeline-item');
+  for (var i = 0; i < items.length; i++) {
+    var item = items[i];
+    var dateEl = item.querySelector('.timeline-date');
+    if (!dateEl) continue;
+    var d = parseTimelineDate(dateEl.textContent);
+    if (!d) continue;
+    if (d > now) {
+      // 未来时间：隐藏，等待解锁
+      if (item.style.display !== 'none') {
+        item.style.display = 'none';
+        item.setAttribute('data-locked', '1');
+      }
+      lockedCount++;
+    } else {
+      // 已到时间：显示
+      var wasLocked = item.getAttribute('data-locked') === '1';
+      item.style.display = '';
+      item.setAttribute('data-locked', '0');
+      if (wasLocked) {
+        item.classList.add('timeline-reveal');
+        (function (el) {
+          setTimeout(function () { el.classList.remove('timeline-reveal'); }, 950);
+        })(item);
+      } else {
+        item.classList.remove('timeline-reveal');
+      }
+    }
+  }
+  // 底部提示
+  var hint = document.getElementById('timelineLockedHint');
+  if (hint) {
+    if (lockedCount > 0) {
+      hint.style.display = 'block';
+      hint.textContent = '未完待续 · 未来的故事，会在时间到来时如约而至……';
+    } else {
+      hint.style.display = 'none';
+      hint.textContent = '';
+    }
+  }
+}
+// 每分钟检查一次，确保时间到达后自动解锁（页面打开时也立即执行）
+setInterval(updateTimelineVisibility, 60 * 1000);
 
 
 
